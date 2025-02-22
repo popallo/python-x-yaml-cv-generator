@@ -42,7 +42,7 @@ docker-compose up -d --build
 
 1. Créer un environnement virtuel :
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # Linux/MacOS
 # ou
 .\venv\Scripts\activate  # Windows
@@ -55,7 +55,7 @@ pip install -r requirements.txt
 
 3. Lancer l'application :
 ```bash
-python app.py
+python3 app.py
 ```
 
 ## 📁 Structure des données
