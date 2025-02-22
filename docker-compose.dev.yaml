@@ -1,0 +1,13 @@
+version: '3.9'
+services:
+  cv-generator:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app  # Entire project is mounted
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    command: flask run --host=0.0.0.0 --reload

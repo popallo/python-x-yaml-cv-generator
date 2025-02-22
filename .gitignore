@@ -1,4 +1,5 @@
 *.venv*
+venv/**
 cv_*.yaml
 !cv_sample.yaml
 photo_*

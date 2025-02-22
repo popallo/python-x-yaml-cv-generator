@@ -1,3 +1,5 @@
 Flask==3.0.0
 PyYAML==6.0.1
+weasyprint==64.1
 Jinja2==3.1.2
+tinyhtml5==2.0.0
