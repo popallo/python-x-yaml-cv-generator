@@ -43,9 +43,6 @@ cv:
     diploma: "Diplôme d'Ingénieur en Informatique"
     institution: "École d'Ingénieurs de Lyon"
 
-  - period: "2010 - 2012"
-    diploma: "DUT Informatique"
-    institution: "IUT de Bordeaux"
 
   skills:
     cloud:
@@ -56,11 +53,6 @@ cv:
     - docker
     - kubernetes
     - helm
-    infrastructure:
-    - terraform
-    - ansible
-    - jenkins
-    - gitlab-ci
     monitoring:
     - prometheus
     - grafana
