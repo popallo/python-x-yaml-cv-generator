@@ -110,8 +110,7 @@ def download_cv(cv_id):
     photo_base64 = get_base64_photo(photo_path)
     if not photo_base64:
         abort(500)
-    
-    # Get template choice from query parameter, same as show_cv
+        # Get template choice from query parameter, same as show_cv
     template_choice = request.args.get('template', 'standard')
     template_name = 'cv_ui_light_design.html' if template_choice == 'optimized' else 'cv_template.html'
     
