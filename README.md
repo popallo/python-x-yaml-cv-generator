@@ -39,7 +39,7 @@ docker-compose up -d --build
 
 1. Créer un environnement virtuel :
 ```bash
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate  # Linux/MacOS
 # ou
 .\venv\Scripts\activate  # Windows
@@ -48,6 +48,11 @@ source venv/bin/activate  # Linux/MacOS
 2. Installer les dépendances Python :
 ```bash
 pip install -r requirements.txt
+```
+
+3. Lancer l'application :
+```bash
+python3 app.py
 ```
 
 ## 📁 Structure des données
@@ -185,3 +190,17 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 ## 📧 Contact
 
 Pour toute question ou suggestion, n'hésitez pas à ouvrir une issue.
+
+
+### Linux : Installation des dépendances
+
+WIP : Filtrer si dépendance inutiles ci-dessous. Elles ont été générées par l'assistant Claude 3.5.
+```
+sudo apt-get install build-essential python3-dev python3-pip python3-setuptools python3-wheel python3-cffi libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf2.0-0 libffi-dev shared-mime-info
+```
+
+### Windows : Installation des dépendances
+
+```
+A compléter 
+```
