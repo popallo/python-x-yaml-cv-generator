@@ -1,4 +1,4 @@
-from flask import Flask, render_template, abort, send_file
+from flask import Flask, render_template, abort, send_file, request
 import yaml
 import base64
 import os
@@ -83,10 +83,14 @@ def show_cv(cv_id):
     if not photo_base64:
         abort(500)
     
+    # Get template choice from query parameter
+    template_choice = request.args.get('template', 'standard')
+    template_name = 'cv_ui_light_design.html' if template_choice == 'optimized' else 'cv_template.html'
+    
     return render_template(
-        'cv_template_space_optimized.html',
+        template_name,
         cv=cv_data['cv'],
-        cv_id=cv_id,  # On ajoute l'ID ici
+        cv_id=cv_id,
         photo=photo_base64,
         show_download=True
     )
@@ -107,9 +111,13 @@ def download_cv(cv_id):
     if not photo_base64:
         abort(500)
     
-    # Générer le HTML
+    # Get template choice from query parameter, same as show_cv
+    template_choice = request.args.get('template', 'standard')
+    template_name = 'cv_ui_light_design.html' if template_choice == 'optimized' else 'cv_template.html'
+    
+    # Générer le HTML avec le bon template
     html_content = render_template(
-        'cv_template.html',
+        template_name,
         cv=cv_data['cv'],
         cv_id=cv_id,
         photo=photo_base64,
@@ -124,7 +132,8 @@ def download_cv(cv_id):
     pdf_file.seek(0)
     
     # Sanitize filename for both Windows and Linux
-    safe_filename = f'cv_{cv_id}.pdf'.replace(' ', '_')
+    template_suffix = '_light' if template_choice == 'optimized' else ''
+    safe_filename = f'cv_{cv_id}{template_suffix}.pdf'.replace(' ', '_')
     
     return send_file(
         pdf_file,

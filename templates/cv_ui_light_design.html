@@ -268,7 +268,7 @@
     {% if show_download %}
     <div style="text-align: center;" class="no-print">
         <a href="/" class="download-btn">Retour</a>
-        <a onclick="window.print()" class="download-btn">Télécharger en PDF</a>
+        <a href="{{ url_for('download_cv', cv_id=cv_id, template='optimized') }}" class="download-btn">Télécharger en PDF</a>
     </div>
     {% endif %}
 
