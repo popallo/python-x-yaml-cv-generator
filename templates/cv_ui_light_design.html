@@ -74,7 +74,7 @@
         .header h2 {
             margin: 10px 0 0;
             line-height: 1.5em;
-            font-size: 1.1em;
+            font-size: 15px;
             font-weight: 300;
             color: var(--subtitle-color);
         }
@@ -106,11 +106,13 @@
         }
 
         .sidebar-item, .main-item {
-            margin-bottom: 20px;
+            margin-top: 4px;
+            margin-bottom: 4px;
         }
 
         .sidebar-item h3, .main-item h3 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            margin-top: 5px;
             font-size: 1em;
             font-weight: bold;
         }
@@ -130,19 +132,20 @@
         }
 
         .category {
-            margin: 8px 0 12px 0;
+            margin: 4px 0 6px 0;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 4px 8px;
         }
 
         .skill-badge {
             background: var(--badge-bg);
+            /* background: transparent; */
             color: var(--badge-text);
-            padding: 5px 10px;
+            padding: 2px 3px;
             font-size: 0.8em;
             border-radius: 4px;
         }
@@ -170,8 +173,8 @@
 
         .responsibility {
             font-size: 0.9em;
-            list-style-type: disc;
-            margin: 20px 0px;
+            list-style-type: circle;
+            margin: 4px 0px 0 -20px;
             color: var(--text-color);
         }
 
@@ -265,7 +268,7 @@
     {% if show_download %}
     <div style="text-align: center;" class="no-print">
         <a href="/" class="download-btn">Retour</a>
-        <a href="{{ url_for('download_cv', cv_id=cv_id, template='standard') }}" class="download-btn">Télécharger en PDF</a>
+        <a href="{{ url_for('download_cv', cv_id=cv_id, template='optimized') }}" class="download-btn">Télécharger en PDF</a>
     </div>
     {% endif %}
 
