@@ -1,0 +1,17 @@
+FROM python:3.9-slim
+
+WORKDIR /app
+
+# Copy and install development dependencies
+COPY dev-requirements.txt .
+RUN pip install --no-cache-dir -r dev-requirements.txt
+
+# Copy application code
+COPY app.py .
+COPY config/ ./config/
+COPY templates/ ./templates/
+RUN mkdir -p data/cvs data/photos
+
+# In development you might prefer to use the Python entrypoint directly so your app.py
+# (with livereload logic) is used.
+CMD ["flask", "run", "--host=0.0.0.0"]

@@ -1,0 +1,106 @@
+{% macro theme_variables() %}
+:root {
+    /* Thème clair (par défaut) */
+    --bg-color: white;
+    --text-color: #333;
+    --header-bg: #f3f4f6;
+    --content-bg: #f9f9f9;
+    --sidebar-bg: #f4f4f5;
+    --title-color: #1f2937;
+    --subtitle-color: #4b5563;
+    --accent-color: #4f46e5;
+    --badge-bg: #e4e4e7;
+    --badge-text: #333;
+    --company-color: #555;
+    --period-color: #888;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    /* Thème sombre */
+    --bg-color: #1a1a1a;
+    --text-color: #ffffff;
+    --header-bg: #2d2d2d;
+    --content-bg: #2d2d2d;
+    --sidebar-bg: #3d3d3d;
+    --title-color: #ffffff;
+    --subtitle-color: #cccccc;
+    --accent-color: #8b8bff;
+    --badge-bg: #4d4d4d;
+    --badge-text: #ffffff;
+    --company-color: #cccccc;
+    --period-color: #999999;
+    --shadow: rgba(0, 0, 0, 0.3);
+}
+{% endmacro %}
+
+{% macro theme_button() %}
+<button class="theme-switch no-print" onclick="toggleTheme()">
+    <span class="theme-icon">🌞</span>
+    <span class="theme-text">Changer de thème</span>
+</button>
+{% endmacro %}
+
+{% macro theme_script() %}
+<script>
+    function updateThemeIcon(isDark) {
+        const icon = document.querySelector('.theme-icon');
+        if (icon) icon.textContent = isDark ? '🌙' : '🌞';
+    }
+
+    function toggleTheme() {
+        const body = document.documentElement;
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        body.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        updateThemeIcon(newTheme === 'dark');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme === 'dark');
+
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        if (!localStorage.getItem('theme')) {
+            document.documentElement.setAttribute('data-theme', 
+                prefersDark.matches ? 'dark' : 'light');
+            updateThemeIcon(prefersDark.matches);
+        }
+
+        prefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                document.documentElement.setAttribute('data-theme',
+                    e.matches ? 'dark' : 'light');
+                updateThemeIcon(e.matches);
+            }
+        });
+    });
+</script>
+{% endmacro %}
+
+{% macro theme_button_style() %}
+.theme-switch {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    background: var(--content-bg);
+    border: 1px solid var(--accent-color);
+    color: var(--text-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 4px var(--shadow);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+.theme-switch:hover {
+    transform: translateY(-2px);
+}
+{% endmacro %}

@@ -34,9 +34,6 @@ docker-compose up -d --build
 
 - Python 3.8 ou supérieur
 - pip
-- pip (gestionnaire de paquets Python)
-
-
 
 #### Installation du projet
 
@@ -65,7 +62,7 @@ Les fichiers de CV et photos sont stockés dans les dossiers suivants :
 cv-generator/
 └── data/
     ├── cvs/            # Fichiers YAML de CV (incluant cv_sample.yaml)
-    └── photos/         # Photos de profil (incluant photo_sample.jpg)
+    └── photos/         # Photos de profil (incluant cv_sample.jpg)
 ```
 
 ### Format des fichiers
@@ -79,6 +76,8 @@ cv-generator/
    - Placez votre photo dans `data/photos/`
    - Nommez-la avec le même identifiant que votre CV (ex: `mon-cv.jpg`)
    - Formats supportés : JPG, JPEG, PNG
+
+> **_NOTE:_** Il est important que la photo et le CV portent un nom similaire.
 
 ### Exemple de création de CV
 

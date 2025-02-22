@@ -84,7 +84,7 @@ def show_cv(cv_id):
         abort(500)
     
     return render_template(
-        'cv_template.html',
+        'cv_template_space_optimized.html',
         cv=cv_data['cv'],
         cv_id=cv_id,  # On ajoute l'ID ici
         photo=photo_base64,

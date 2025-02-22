@@ -8,4 +8,5 @@ services:
     environment:
       - FLASK_APP=app.py
       - FLASK_ENV=production
+    command: flask run --host=0.0.0.0
     restart: unless-stopped

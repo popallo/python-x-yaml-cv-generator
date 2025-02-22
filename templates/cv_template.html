@@ -1,3 +1,4 @@
+{% from 'partials/theme.html' import theme_variables, theme_button, theme_script, theme_button_style %}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,6 +7,9 @@
     <title>Curriculum Vitae</title>
     
     <style>
+        {{ theme_variables() }}
+        {{ theme_button_style() }}
+
         @page {
             size: A4;
             margin: 20mm;
@@ -25,27 +29,28 @@
 
         body {
             font-family: 'Roboto', Arial, sans-serif;
-            color: #333;
+            color: var(--text-color);
             margin: 10px;
             padding: 0;
+            background: var(--bg-color);
         }
 
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: var(--bg-color);
             border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         .header {
             display: flex;
             align-items: center;
-            background-color: #f3f4f6;
-            color: #333;
+            background-color: var(--header-bg);
+            color: var(--text-color);
             padding: 20px;
-            page-break-inside: avoid; /* Empêche le saut de page */
+            page-break-inside: avoid;
         }
 
         .header img {
@@ -63,7 +68,7 @@
         .header h1 {
             margin: 0;
             font-size: 1.8em;
-            color: #1f2937;
+            color: var(--title-color);
         }
 
         .header h2 {
@@ -71,18 +76,18 @@
             line-height: 1.5em;
             font-size: 1.1em;
             font-weight: 300;
-            color: #4b5563;
+            color: var(--subtitle-color);
         }
 
         .content {
             display: flex;
             flex-direction: row;
-            background: #f9f9f9;
+            background: var(--content-bg);
             margin-top: 0;
         }
 
         .sidebar {
-            background: #f4f4f5;
+            background: var(--sidebar-bg);
             width: 30%;
             padding: 20px;
         }
@@ -95,8 +100,8 @@
         .section-title {
             margin-bottom: 10px;
             font-size: 1.2em;
-            color: #4f46e5;
-            border-bottom: 2px solid #4f46e5;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
             padding-bottom: 5px;
         }
 
@@ -124,6 +129,10 @@
             padding: 3px 0px;
         }
 
+        .category {
+            margin: 8px 0 12px 0;
+        }
+
         .skills {
             display: flex;
             flex-wrap: wrap;
@@ -131,8 +140,8 @@
         }
 
         .skill-badge {
-            background: #e4e4e7;
-            color: #333;
+            background: var(--badge-bg);
+            color: var(--badge-text);
             padding: 5px 10px;
             font-size: 0.8em;
             border-radius: 4px;
@@ -146,30 +155,31 @@
         .experience-item h3 {
             margin: 0;
             font-size: 1em;
-            color: #4f46e5;
+            color: var(--accent-color);
         }
 
         .experience-item .company {
             font-size: 0.9em;
-            color: #555;
+            color: var(--company-color);
         }
 
         .experience-item .period {
             font-size: 0.8em;
-            color: #888;
+            color: var(--period-color);
         }
 
         .responsibility {
             font-size: 0.9em;
             list-style-type: disc;
             margin: 20px 0px;
+            color: var(--text-color);
         }
 
         .download-btn {
             display: inline-block;
             margin: 20px;
             padding: 10px 15px;
-            background-color: #4f46e5;
+            background-color: var(--accent-color);
             color: white;
             text-decoration: none;
             border-radius: 5px;
@@ -178,12 +188,14 @@
         }
 
         .download-btn:hover {
-            background-color: #3b82f6;
+            background-color: var(--button-hover);
             cursor: pointer; 
         }
     </style>
 </head>
 <body class="A4">
+    {{ theme_button() }}
+
     <div class="container">
         <!-- Header -->
         <div class="header">
@@ -207,7 +219,7 @@
                     <div class="skills">
                         {% for category, skills in cv.skills.items() %}
                         <div>
-                            <h4>{{ category|capitalize }}</h4>
+                            <h4 class="category">{{ category|capitalize }}</h4>
                             <div class="skills">
                                 {% for skill in skills %}
                                 <span class="skill-badge">{{ skill }}</span>
@@ -249,11 +261,14 @@
             </div>
         </div>
     </div>
+
     {% if show_download %}
     <div style="text-align: center;" class="no-print">
         <a href="/" class="download-btn">Retour</a>
         <a href="{{ url_for('download_cv', cv_id=cv_id) }}" class="download-btn">Télécharger en PDF</a>
     </div>
     {% endif %}
+
+    {{ theme_script() }}
 </body>
 </html>
