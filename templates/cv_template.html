@@ -12,27 +12,146 @@
 
         @page {
             size: A4;
-            margin: 20mm;
+            margin: 6mm;
         }
 
         @media print {
             .no-print {
                 display: none !important;
             }
-            .container{
-                height: 100% !important;
+            * {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
             }
-            .content{
-                height:100% !important;
+            body {
+                margin: 0;
+                padding: 0;
+            }
+            .container {
+                box-shadow: none;
+                border-radius: 0;
+                max-height: none;
+            }
+            .content {
+                max-height: none;
+            }
+            .header {
+                padding: 5px 8px;
+                page-break-inside: avoid;
+                page-break-after: avoid;
+            }
+            .header img {
+                width: 55px;
+                height: 55px;
+                margin-right: 8px;
+                border-width: 2px;
+            }
+            .header h1 {
+                font-size: 1.15em;
+                margin-bottom: 2px;
+                letter-spacing: 0.5px;
+            }
+            .header h2 {
+                font-size: 0.7em;
+                line-height: 1.2;
+            }
+            .education-item {
+                margin-bottom: 6px !important;
+            }
+            .education-item p {
+                margin-bottom: 1px !important;
+                font-size: 0.8em !important;
+            }
+            .education-item strong {
+                font-size: 0.85em !important;
+            }
+            .sidebar, .main {
+                padding: 8px;
+            }
+            .section-title {
+                margin-bottom: 4px;
+                font-size: 0.9em;
+                padding-bottom: 2px;
+            }
+            .sidebar-item, .main-item {
+                margin-bottom: 8px;
+                page-break-inside: avoid;
+            }
+            .main-item h3.section-title {
+                margin-bottom: 6px;
+            }
+            .experience-item {
+                margin-bottom: 8px;
+                padding-bottom: 8px;
+                page-break-inside: avoid;
+            }
+            .experience-item:last-child {
+                padding-bottom: 0;
+                margin-bottom: 0;
+            }
+            .experience-item h3 {
+                font-size: 0.85em;
+            }
+            .experience-item .company {
+                font-size: 0.75em;
+            }
+            .experience-item .company-separator {
+                font-size: 0.75em;
+            }
+            .experience-title-company {
+                gap: 2px;
+            }
+            .experience-header {
+                margin-bottom: 3px;
+            }
+            .responsibility {
+                font-size: 0.75em;
+                margin-top: 3px;
+            }
+            .responsibility li {
+                margin-bottom: 2px;
+                line-height: 1.25;
+            }
+            .experience-item .period {
+                font-size: 0.7em;
+                padding: 1px 5px;
+            }
+            .responsibility li {
+                margin-bottom: 4px;
+                line-height: 1.4;
+            }
+            .skills-container {
+                margin-bottom: 6px;
+            }
+            .skills-container h4 {
+                font-size: 0.7em;
+                margin-bottom: 2px;
+            }
+            .skill-badge {
+                padding: 2px 5px;
+                font-size: 0.65em;
+            }
+            .sidebar-item p {
+                padding: 0;
+                font-size: 0.75em;
+                line-height: 1.3;
+            }
+            .skills {
+                gap: 4px;
+                margin-top: 4px;
+            }
+            .content {
+                page-break-before: avoid;
             }
         }
 
         body {
-            font-family: 'Roboto', Arial, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
             color: var(--text-color);
             margin: 10px;
             padding: 0;
             background: var(--bg-color);
+            line-height: 1.6;
         }
 
         .container {
@@ -46,19 +165,23 @@
 
         .header {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             background-color: var(--header-bg);
             color: var(--text-color);
-            padding: 20px;
+            padding: 20px 25px;
             page-break-inside: avoid;
+            page-break-after: avoid;
+            border-bottom: 3px solid var(--accent-color);
         }
 
         .header img {
-            width: 120px;
-            height: 120px;
+            width: 90px;
+            height: 90px;
             border-radius: 50%;
             margin-right: 20px;
             object-fit: cover;
+            border: 3px solid var(--accent-color);
+            flex-shrink: 0;
         }
 
         .header-content {
@@ -66,19 +189,20 @@
         }
 
         .header h1 {
-            margin: 0;
-            font-size: 2.0em;
+            margin: 0 0 8px 0;
+            font-size: 1.8em;
             font-weight: 700;
             color: var(--title-color);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
+            line-height: 1.2;
         }
 
         .header h2 {
-            margin: 10px 0 0;
-            line-height: 1.5em;
-            font-size: 0.95em;
-            font-weight: 300;
+            margin: 0;
+            line-height: 1.5;
+            font-size: 0.9em;
+            font-weight: 400;
             color: var(--subtitle-color);
         }
 
@@ -92,86 +216,178 @@
         .sidebar {
             background: var(--sidebar-bg);
             width: 30%;
-            padding: 20px;
+            padding: 25px 20px;
+            border-right: 1px solid rgba(0, 0, 0, 0.08);
         }
 
         .main {
             width: 70%;
-            padding: 20px;
+            padding: 25px 30px;
         }
 
         .section-title {
-            margin-bottom: 10px;
-            font-size: 1.2em;
+            margin-bottom: 12px;
+            font-size: 1.1em;
             color: var(--accent-color);
             border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 5px;
+            padding-bottom: 6px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .sidebar-item, .main-item {
             margin-bottom: 20px;
         }
 
+        .sidebar-item:last-child {
+            margin-bottom: 0;
+        }
+
         .sidebar-item h3, .main-item h3 {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             font-size: 1em;
-            font-weight: bold;
+            font-weight: 600;
         }
 
         .main-item h3.section-title {
-            margin-bottom: 10px;
+            margin-bottom: 16px;
         }
 
         .sidebar-item p, .main-item p {
             margin: 0;
             font-size: 0.9em;
-            line-height: 1.4;
+            line-height: 1.6;
         }
 
-        .sidebar-item p{
-            padding: 3px 0px;
+        .sidebar-item p {
+            padding: 4px 0;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
+            gap: 6px;
+            margin-top: 8px;
+        }
+
+        .skills-container {
+            margin-bottom: 12px;
+        }
+
+        .skills-container:last-child {
+            margin-bottom: 0;
+        }
+
+        .skills-container h4 {
+            font-size: 0.85em;
+            font-weight: 600;
+            color: var(--text-color);
+            margin: 0 0 8px 0;
+            text-transform: capitalize;
+            letter-spacing: 0.3px;
         }
 
         .skill-badge {
             background: var(--badge-bg);
             color: var(--badge-text);
-            padding: 5px 10px;
+            padding: 6px 12px;
             font-size: 0.8em;
             border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+            transition: transform 0.2s ease;
         }
 
         .experience-item {
-            margin-bottom: 15px;
+            margin-bottom: 16px;
             page-break-inside: avoid;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 6px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .experience-title-company {
+            flex: 1;
+            min-width: 200px;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 8px;
         }
 
         .experience-item h3 {
             margin: 0;
-            font-size: 1em;
+            font-size: 1.05em;
             color: var(--accent-color);
+            font-weight: 600;
+            display: inline;
         }
 
         .experience-item .company {
             font-size: 0.9em;
             color: var(--company-color);
+            font-weight: 500;
+            margin: 0;
+            display: inline;
+        }
+
+        .experience-item .company-separator {
+            color: var(--company-color);
+            margin: 0 4px;
+            font-weight: 300;
         }
 
         .experience-item .period {
-            font-size: 0.8em;
+            font-size: 0.85em;
             color: var(--period-color);
+            font-weight: 500;
+            white-space: nowrap;
+            padding: 4px 8px;
+            background: var(--badge-bg);
+            border-radius: 4px;
+            margin: 0;
         }
 
         .responsibility {
             font-size: 0.9em;
-            list-style-type: disc;
-            margin: 20px 0px;
+            list-style-type: none;
+            margin: 12px 0 0 0;
+            padding-left: 0;
             color: var(--text-color);
+        }
+
+        .responsibility li {
+            padding-left: 20px;
+            position: relative;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .responsibility li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .responsibility li:last-child {
+            margin-bottom: 0;
         }
 
         .download-btn {
@@ -215,27 +431,31 @@
                 </div>
                 <div class="sidebar-item">
                     <h3 class="section-title">💼 Compétences</h3>
-                    <div class="skills">
-                        {% for category, skills in cv.skills.items() %}
-                        <div>
-                            <h4>{{ category|capitalize }}</h4>
-                            <div class="skills">
-                                {% for skill in skills %}
-                                <span class="skill-badge">{{ skill }}</span>
-                                {% endfor %}
-                            </div>
+                    {% for category, skills in cv.skills.items() %}
+                    <div class="skills-container">
+                        <h4>{{ category|capitalize }}</h4>
+                        <div class="skills">
+                            {% for skill in skills %}
+                            <span class="skill-badge">{{ skill }}</span>
+                            {% endfor %}
                         </div>
-                        {% endfor %}
                     </div>
+                    {% endfor %}
                 </div>
                 <div class="sidebar-item">
                     <h3 class="section-title">🎓 Formations</h3>
                     {% for edu in cv.education %}
-                    <p>
-                        <strong>{{ edu.diploma }}</strong><br>
-                        {{ edu.institution }}<br>
-                        <em>{{ edu.period }}</em>
-                    </p>
+                    <div style="margin-bottom: 8px;" class="education-item">
+                        <p style="margin-bottom: 1px;">
+                            <strong style="font-size: 0.9em;">{{ edu.diploma }}</strong>
+                        </p>
+                        <p style="margin-bottom: 1px; color: var(--subtitle-color); font-size: 0.85em;">
+                            {{ edu.institution }}
+                        </p>
+                        <p style="margin: 0; font-size: 0.8em; color: var(--period-color); font-style: italic;">
+                            {{ edu.period }}
+                        </p>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
@@ -246,9 +466,16 @@
                     <h3 class="section-title">🛠️ Expériences professionnelles</h3>
                     {% for exp in cv.experiences %}
                     <div class="experience-item">
-                        <h3>{{ exp.title }}</h3>
-                        <p class="company">{{ exp.company }}</p>
-                        <p class="period">{{ exp.period }}</p>
+                        <div class="experience-header">
+                            <div class="experience-title-company">
+                                <h3>{{ exp.title }}</h3>
+                                {% if exp.company %}
+                                <span class="company-separator">•</span>
+                                <span class="company">{{ exp.company }}</span>
+                                {% endif %}
+                            </div>
+                            <p class="period">{{ exp.period }}</p>
+                        </div>
                         <ul class="responsibility">
                             {% for resp in exp.responsibilities %}
                             <li>{{ resp }}</li>
