@@ -23,7 +23,14 @@ git clone [URL_DU_REPO]
 cd cv-generator
 ```
 
-2. Construire et lancer avec Docker Compose :
+**Pour la developpement**
+2. Construire et lancer avec Docker Compose de **developpement** :
+```bash
+docker compose -f docker-compose.dev.yaml up --build
+```
+
+**Pour la production**
+2. Construire et lancer avec Docker Compose de **production** :
 ```bash
 docker-compose up -d --build
 ```
@@ -48,6 +55,11 @@ source venv/bin/activate  # Linux/MacOS
 2. Installer les dépendances Python :
 ```bash
 pip install -r requirements.txt
+```
+
+3. Démarrer le projet en lcoal
+```bash
+python flask run --host=0.0.0.0
 ```
 
 ## 📁 Structure des données
